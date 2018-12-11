@@ -6,11 +6,12 @@ const bodyparser = require('body-parser');
 app.use(bodyparser.json());
 
 var mysqlConnection = mysql.createConnection({
-    host: 'localhost',
-    user: 'root',
-    password: 'danish123',
-    database: 'bi_bot',
+     host: '35.196.203.193',
+    user: 'admin',
+    password: 'mysql',
+    database: 'bi_bot_1_1',
     multipleStatements: true
+
 });
 
 mysqlConnection.connect((err) => {
@@ -88,4 +89,7 @@ app.get('/insert', (req, res) => {
     })
 });
 
-app.listen(3000, () => console.log('Express server is running at port no : 3000'));
+const port = process.env.PORT;
+app.listen(port, function () {
+    console.log("Server is running on port", port);
+});
